@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JMAQuake | Project Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="sidebar">
+    <header class="nav-header">
+        <a href="index.html">
+            <img class="nav-logo" src="images/logo.svg" src="image" onerror="this.onerror=null; this.src='images/logo.png'" alt="Project" />
+            <h1>Project</h1>
+        </a>
+    </header>
+
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="API.html">API</a><ul class="methods"><li data-type="method"><a href="API.html#request">request</a></li></ul></li><li><a href="Base.html">Base</a></li><li><a href="BaseIssue.html">BaseIssue</a></li><li><a href="Collection.html">Collection</a><ul class="methods"><li data-type="method"><a href="Collection.html#add">add</a></li><li data-type="method"><a href="Collection.html#every">every</a></li><li data-type="method"><a href="Collection.html#filter">filter</a></li><li data-type="method"><a href="Collection.html#find">find</a></li><li data-type="method"><a href="Collection.html#map">map</a></li><li data-type="method"><a href="Collection.html#random">random</a></li><li data-type="method"><a href="Collection.html#reduce">reduce</a></li><li data-type="method"><a href="Collection.html#remove">remove</a></li><li data-type="method"><a href="Collection.html#some">some</a></li><li data-type="method"><a href="Collection.html#update">update</a></li></ul></li><li><a href="JMAQuake.html">JMAQuake</a></li><li><a href="JMAQuakeEarthQuake.html">JMAQuakeEarthQuake</a></li><li><a href="JMAQuakeIssue.html">JMAQuakeIssue</a></li><li><a href="JMAQuakePoint.html">JMAQuakePoint</a></li><li><a href="JMAQuakePoints.html">JMAQuakePoints</a><ul class="methods"><li data-type="method"><a href="JMAQuakePoints.html#add">add</a></li><li data-type="method"><a href="JMAQuakePoints.html#separateArray">separateArray</a></li></ul></li><li><a href="JMATsunami.html">JMATsunami</a></li><li><a href="P2PClient.html">P2PClient</a><ul class="methods"><li data-type="method"><a href="P2PClient.html#getQuakeList">getQuakeList</a></li></ul></li><li><a href="Scale.html">Scale</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">JMAQuake</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        JMAQuake
+        </h2>
+        
+            <div class="class-description">地震全体の情報</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="JMAQuake"><span class="type-signature"></span>new JMAQuake<span class="signature">(client, data)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Client</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>issue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="JMAQuakeIssue.html">JMAQuakeIssue</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">発表元の情報</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>earthquake</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="JMAQuakeEarthQuake.html">JMAQuakeEarthQuake</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">地震の詳細な情報</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>points</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="JMAQuakePoints.html">JMAQuakePoints</a>.&lt;<a href="JMAQuakePoint.html">JMAQuakePoint</a>></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    JMAQuakePoints
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="structure_JMAQuake.js.html">structure/JMAQuake.js</a>, <a href="structure_JMAQuake.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="Base.html">Base</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Fri Sep 04 2020 09:40:02 GMT+0900 (日本標準時) using the Archiver theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

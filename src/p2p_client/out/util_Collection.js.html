@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>util/Collection.js | Project Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="sidebar">
+    <header class="nav-header">
+        <a href="index.html">
+            <img class="nav-logo" src="images/logo.svg" src="image" onerror="this.onerror=null; this.src='images/logo.png'" alt="Project" />
+            <h1>Project</h1>
+        </a>
+    </header>
+
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="API.html">API</a><ul class="methods"><li data-type="method"><a href="API.html#request">request</a></li></ul></li><li><a href="Base.html">Base</a></li><li><a href="BaseIssue.html">BaseIssue</a></li><li><a href="Collection.html">Collection</a><ul class="methods"><li data-type="method"><a href="Collection.html#add">add</a></li><li data-type="method"><a href="Collection.html#every">every</a></li><li data-type="method"><a href="Collection.html#filter">filter</a></li><li data-type="method"><a href="Collection.html#find">find</a></li><li data-type="method"><a href="Collection.html#map">map</a></li><li data-type="method"><a href="Collection.html#random">random</a></li><li data-type="method"><a href="Collection.html#reduce">reduce</a></li><li data-type="method"><a href="Collection.html#remove">remove</a></li><li data-type="method"><a href="Collection.html#some">some</a></li><li data-type="method"><a href="Collection.html#update">update</a></li></ul></li><li><a href="JMAQuake.html">JMAQuake</a></li><li><a href="JMAQuakeEarthQuake.html">JMAQuakeEarthQuake</a></li><li><a href="JMAQuakeIssue.html">JMAQuakeIssue</a></li><li><a href="JMAQuakePoint.html">JMAQuakePoint</a></li><li><a href="JMAQuakePoints.html">JMAQuakePoints</a><ul class="methods"><li data-type="method"><a href="JMAQuakePoints.html#add">add</a></li><li data-type="method"><a href="JMAQuakePoints.html#separateArray">separateArray</a></li></ul></li><li><a href="JMATsunami.html">JMATsunami</a></li><li><a href="P2PClient.html">P2PClient</a><ul class="methods"><li data-type="method"><a href="P2PClient.html#getQuakeList">getQuakeList</a></li></ul></li><li><a href="Scale.html">Scale</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">util/Collection.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+* Hold a bunch of something
+* @extends Map
+* @prop {Class} baseObject The base class for all items
+* @prop {Number?} limit Max number of items to hold
+*/
+class Collection extends Map {
+	/**
+	* Construct a Collection
+	* @arg {Class} baseObject The base class for all items
+	* @arg {Number} [limit] Max number of items to hold
+	*/
+	constructor(baseObject, limit) {
+		super();
+		this.baseObject = baseObject;
+		this.limit = limit;
+	}
+
+	/**
+	* Add an object
+	* @arg {Object} obj The object data
+	* @arg {String} obj.id The ID of the object
+	* @arg {Class?} extra An extra parameter the constructor may need
+	* @arg {Boolean} replace Whether to replace an existing object with the same ID
+	* @returns {Class} The existing or newly created object
+	*/
+	add(obj, extra, replace) {
+		if(obj.id == null) {
+			throw new Error("Missing object id");
+		}
+		const existing = this.get(obj.id);
+		if(existing &amp;&amp; !replace) {
+			return existing;
+		}
+		if(!(obj instanceof this.baseObject || obj.constructor.name === this.baseObject.name)) {
+			obj = new this.baseObject(obj, extra);
+		}
+		this.set(obj.id, obj);
+		if(this.limit &amp;&amp; this.size > this.limit) {
+			const iter = this.keys();
+			while(this.size > this.limit) {
+				this.delete(iter.next().value);
+			}
+		}
+		return obj;
+	}
+	/**
+	 * Return the first object to make the function evaluate true
+	 * @arg {function} func A function that takes an object and returns true if it matches
+	 * @returns {Class?} The first matching object, or undefined if no match
+	 */
+	find(func) {
+		for(const item of this.values()) {
+			if(func(item)) {
+				return item;
+			}
+		}
+		return undefined;
+	}
+
+	/**
+	* Get a random object from the Collection
+	* @returns {Class?} The random object, or undefined if there is no match
+	*/
+	random() {
+		const index = Math.floor(Math.random() * this.size);
+		const iter = this.values();
+		for(let i = 0; i &lt; index; ++i) {
+			iter.next();
+		}
+		return iter.next().value;
+	}
+
+	/**
+	* Return all the objects that make the function evaluate true
+	* @arg {function} func A function that takes an object and returns true if it matches
+	* @returns {Array&lt;Class>} An array containing all the objects that matched
+	*/
+	filter(func) {
+		const arr = [];
+		for(const item of this.values()) {
+			if(func(item)) {
+				arr.push(item);
+			}
+		}
+		return arr;
+	}
+
+	/**
+	* Return an array with the results of applying the given function to each element
+	* @arg {function} func A function that takes an object and returns something
+	* @returns {Array} An array containing the results
+	*/
+	map(func) {
+		const arr = [];
+		for(const item of this.values()) {
+			arr.push(func(item));
+		}
+		return arr;
+	}
+
+	/**
+	 * Returns a value resulting from applying a function to every element of the collection
+	 * @arg {function} func A function that takes the previous value and the next item and returns a new value
+	 * @arg {any} [initialValue] The initial value passed to the function
+	 * @returns {any} The final result
+	 */
+	reduce(func, initialValue) {
+		const iter = this.values();
+		let val;
+		let result = initialValue === undefined ? iter.next().value : initialValue;
+		while((val = iter.next().value) !== undefined) {
+			result = func(result, val);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns true if all elements satisfy the condition
+	 * @arg {function} func A function that takes an object and returns true or false
+	 * @returns {Boolean} Whether or not all elements satisfied the condition
+	 */
+	every(func) {
+		for(const item of this.values()) {
+			if(!func(item)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Returns true if at least one element satisfies the condition
+	 * @arg {function} func A function that takes an object and returns true or false
+	 * @returns {Boolean} Whether or not at least one element satisfied the condition
+	 */
+	some(func) {
+		for(const item of this.values()) {
+			if(func(item)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	* Update an object
+	* @arg {Object} obj The updated object data
+	* @arg {String} obj.id The ID of the object
+	* @arg {Class?} extra An extra parameter the constructor may need
+	* @arg {Boolean} replace Whether to replace an existing object with the same ID
+	* @returns {Class} The updated object
+	*/
+	update(obj, extra, replace) {
+		if(!obj.id &amp;&amp; obj.id !== 0) {
+			throw new Error("Missing object id");
+		}
+		const item = this.get(obj.id);
+		if(!item) {
+			return this.add(obj, extra, replace);
+		}
+		item.update(obj, extra);
+		return item;
+	}
+
+	/**
+	* Remove an object
+	* @arg {Object} obj The object
+	* @arg {String} obj.id The ID of the object
+	* @returns {Class?} The removed object, or null if nothing was removed
+	*/
+	remove(obj) {
+		const item = this.get(obj.id);
+		if(!item) {
+			return null;
+		}
+		this.delete(obj.id);
+		return item;
+	}
+
+	toString() {
+		return `[Collection&lt;${this.baseObject.name}>]`;
+	}
+
+	toJSON() {
+		const json = {};
+		for(const item of this.values()) {
+			json[item.id] = item;
+		}
+		return json;
+	}
+}
+
+export default Collection;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Fri Sep 04 2020 09:40:02 GMT+0900 (日本標準時) using the Archiver theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

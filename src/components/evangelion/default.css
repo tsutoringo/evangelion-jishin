@@ -1,0 +1,24 @@
+body {
+	--eva-bg-color: #2c2c2c;
+	--eva-color: white;
+	--eva-color-disabled: #bdbdbd;
+	background-color: var(--eva-bg-color);
+	color: white;
+}
+
+.eva-red {
+	--main-color: rgb(211, 41, 15, 1);
+}
+
+.eva-orange {
+	--main-color: rgb(230, 119, 11, 1);
+}
+
+.eva-green {
+	--main-color: rgb(82, 208, 83, 1);
+}
+
+.eva-yellow {
+	--main-color: rgb(247, 187, 42, 1);
+}
+  

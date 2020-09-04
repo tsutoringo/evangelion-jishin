@@ -5,19 +5,30 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "ui": "vue ui",
+    "jsdoc": "cd ./src/p2p_client/ && jsdoc -r ./lib --configure .jsdoc.json --verbose"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "eslint-plugin-babel": "^5.3.1",
+    "jsdoc-template": "github:braintree/jsdoc-template",
+    "moment": "^2.27.0",
+    "v-tooltip": "^2.0.3",
+    "vue": "^2.6.11",
+    "vue-moment": "^4.1.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-methods": "^7.10.4",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
+    "archiver-jsdoc-theme": "github:archiverjs/jsdoc-theme",
+    "babel-eslint": "^11.0.0-beta.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "minami": "^1.2.3",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -25,14 +36,20 @@
     "env": {
       "node": true
     },
+    "plugins": [
+      "babel"
+    ],
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
     ],
     "parserOptions": {
+      "ecmaVersion": 2020,
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-undef": "off"
+    }
   },
   "browserslist": [
     "> 1%",
