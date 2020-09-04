@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<div style="width: 30%;height: 100%;overflow: scroll;">
+		<div style="width: 30%;min-width: 310px;height: 100%;overflow: scroll;">
 			<eva-cut-card
 				class="eva-red"
 				v-for="([key, data], index) in Array.from(jishinData)"
@@ -73,7 +73,8 @@ body {
 	margin: 0;
 	background-image: url(https://i.redd.it/z7ucfs32nnv21.png);
 	background-size: cover;
-	background-position: center;
+	background-position-x: right;
+	background-position-y: center;
 }
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -84,4 +85,11 @@ body {
 section {
 	padding: 5px;
 }
+@media all and (max-width: 310px) {
+	#app>div {
+		min-width: unset !important;
+		width: 100% !important;
+	}
+}
+
 </style>
