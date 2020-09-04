@@ -1,5 +1,9 @@
 
 /**
+ * @see {@link https://github.com/abalabahaha/eris/blob/master/lib/util/Collection.js} thanks abalabahaha
+ */
+
+/**
 * Hold a bunch of something
 * @extends Map
 * @prop {Class} baseObject The base class for all items
