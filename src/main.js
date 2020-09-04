@@ -9,6 +9,7 @@ import { EvaDengerBorder, EvaCutCard, EvaSideTitle, EvaNormalTitle, EvaBadge } f
 import './components/evangelion/default.css'
 
 Vue.config.productionTip = false;
+Vue.config.publicPath = './'
 
 Vue.use(vueMoment,{moment});
 
