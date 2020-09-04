@@ -1,3 +1,3 @@
 module.exports = {
-	publicPath: '/dist/'
+	publicPath: '/evangelion-jishin/dist/'
 }
