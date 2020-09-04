@@ -1,10 +1,6 @@
 
 /**
- * @see {@link https://github.com/abalabahaha/eris/blob/master/lib/util/Collection.js} thanks abalabahaha
- */
-
-/**
-* Hold a bunch of something
+* Hold a bunch of something @see {@link https://github.com/abalabahaha/eris/blob/master/lib/util/Collection.js} thanks abalabahaha
 * @extends Map
 * @prop {Class} baseObject The base class for all items
 * @prop {Number?} limit Max number of items to hold
